@@ -26,12 +26,10 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void checkToken() async {
-    print('aaa');
     final refreshToken = await storage.read(key: REFRESH_TOKEN_KEY);
     final accessToken = await storage.read(key: ACCESS_TOKEN_KEY);
 
     if (refreshToken == null || accessToken == null) {
-      print('1');
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(
           builder: (_) => const LoginScreen(),
@@ -39,7 +37,6 @@ class _SplashScreenState extends State<SplashScreen> {
         (route) => false,
       );
     } else {
-      print('2');
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(
           builder: (_) => const RootTab(),

@@ -14,21 +14,8 @@ class RestaurantDetailScreen extends StatelessWidget {
   Future<RestaurantDetailModel> getRestaurantDetail() async {
     final dio = Dio();
 
-    // final accessToken = await storage.read(key: ACCESS_TOKEN_KEY);
-
-    // final resp = await dio.get(
-    //   'http://$ip/restaurant/$id',
-    //   options: Options(
-    //     headers: {
-    //       'authorization': 'Bearer $accessToken',
-    //     },
-    //   ),
-    // );
-    // return resp.data;
-
     final repository =
         RestaurantRepository(dio, baseUrl: 'http://$ip/restaurant');
-
     return repository.getRestaurantDetail(id: id);
   }
 
@@ -57,7 +44,6 @@ class RestaurantDetailScreen extends StatelessWidget {
 
             return CustomScrollView(
               slivers: [
-                // renderTop(model: item),
                 renderTop(model: snapshot.data!),
                 renderLabel(),
                 renderProducts(products: snapshot.data!.products),
